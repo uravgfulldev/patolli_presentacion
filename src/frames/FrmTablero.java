@@ -28,6 +28,7 @@ public class FrmTablero extends FrmBase {
         initComponents();
         init();
         System.out.println("Hola");
+        Jugador jugadore =new Jugador();
     }
 
     /**
