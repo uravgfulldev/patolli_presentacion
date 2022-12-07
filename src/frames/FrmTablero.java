@@ -358,7 +358,8 @@ public class FrmTablero extends FrmBase {
     private void btnEjercerTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEjercerTurnoActionPerformed
         // TODO add your handling code here:
         int[] numMovimientos= {1,2,3,4,5,6};
-        Random r=new Random();        
+        Random r=new Random();   
+        int close=0;
       	int randomNumber=r.nextInt(numMovimientos.length);
       	txtDado.setText(numMovimientos[randomNumber]+"");
     }//GEN-LAST:event_btnEjercerTurnoActionPerformed
