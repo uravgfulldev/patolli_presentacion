@@ -15,8 +15,6 @@ public class Main {
      */
     public static void main(String[] args) {
         
-        System.out.println("Hola");
-        
         FrmInicio frmInicio=new FrmInicio();
         frmInicio.setVisible(true);
     }
