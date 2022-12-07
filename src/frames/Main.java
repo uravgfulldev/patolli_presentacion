@@ -20,6 +20,16 @@ public class Main {
         
         FrmInicio frmInicio=new FrmInicio();
         frmInicio.setVisible(true);
+        System.out.println("asdasd");
+        System.out.println("asdasd");System.out.println("asdasd");
+        System.out.println("asdasd");
+        System.out.println("asdasd");
+        System.out.println("asdasd");System.out.println("asdasd");System.out.println("asdasd");
+        System.out.println("asdasd");System.out.println("asdasd");System.out.println("asdasd");
+        
+        
+        
+        
     }
     
 }
