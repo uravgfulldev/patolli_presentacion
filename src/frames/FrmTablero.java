@@ -5,6 +5,8 @@
 package frames;
 
 import dibujosG.CnvTablero;
+import dibujosG.GraficoFicha;
+import dominio.ColorFicha;
 import dominio.Jugador;
 import dominio.Partida;
 import dominio.Tablero;
@@ -27,7 +29,7 @@ public class FrmTablero extends FrmBase implements Observer {
         jugadorTab=jugador;
         initComponents();
         init();
-        init();
+
     }
 
     /**
@@ -372,6 +374,8 @@ public class FrmTablero extends FrmBase implements Observer {
        cnvTablero.setSize(this.getWidth(), partidaTab.getNumCasillasAspa() * 50 + (50 * 5));
        cnvTablero.setLocation(0,0);
        panelAreaTablero.add(cnvTablero);
+       
+       
    }
     /**
      * @param args the command line arguments

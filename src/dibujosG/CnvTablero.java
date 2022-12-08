@@ -10,6 +10,7 @@ import dominio.CasillaCentro;
 import dominio.CasillaPropia;
 import dominio.CasillaSemicirculo;
 import dominio.CasillaTriangulo;
+import dominio.ColorFicha;
 import dominio.LugarSemicirculo;
 import dominio.LugarTriangulo;
 import java.awt.Color;
