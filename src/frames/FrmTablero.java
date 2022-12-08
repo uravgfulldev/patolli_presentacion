@@ -29,7 +29,7 @@ public class FrmTablero extends FrmBase implements Observer {
     private CnvTablero cnvTablero;
     private Partida partidaTab;
     private Jugador jugadorTab;
-<<<<<<< Updated upstream
+    private ClienteSocket c ;
     private List<Casilla> casillas;
     private int casillaAnterior, casillaNueva;
     Ficha ficha;
@@ -37,14 +37,8 @@ public class FrmTablero extends FrmBase implements Observer {
         partidaTab=partida;
         jugadorTab=jugador;
         casillas = partidaTab.getTablero().getCasillas();
-=======
-    private ClienteSocket c ;
-    public FrmTablero(Partida partida, Jugador jugador) {
-        partidaTab=partida;
-        jugadorTab=jugador;
         c=new ClienteSocket();
         c.agregarObserver(this);
->>>>>>> Stashed changes
         initComponents();
         init();
     }

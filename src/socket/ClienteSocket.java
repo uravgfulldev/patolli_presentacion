@@ -80,13 +80,12 @@ public class ClienteSocket implements Runnable,Observable,IServidor{
         }
         return null;
     }
-<<<<<<< Updated upstream
-=======
+
      private String ConvertirObjectoString(Partida partida) {
         try {
             return objectMapper.writeValueAsString(partida);
         } catch (JsonProcessingException ex) {
-            Logger.getLogger(ServerManager.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("error");
         }
         return "";
     }
@@ -125,5 +124,5 @@ public class ClienteSocket implements Runnable,Observable,IServidor{
             Logger.getLogger(ClienteSocket.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
->>>>>>> Stashed changes
+
 }

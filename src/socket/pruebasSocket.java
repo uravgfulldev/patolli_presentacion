@@ -19,22 +19,12 @@ public class pruebasSocket {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-<<<<<<< Updated upstream
-        ClienteSocket c=new ClienteSocket();
-        try {
-           Partida partidaString=c.recibirMensaje();
-            System.out.println("Numero de casillas por aspa: "+partidaString.getNumCasillasAspa());
-            
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(pruebasSocket.class.getName()).log(Level.SEVERE, null, ex);
-        }
-=======
-        
-//        Partida partidaEnviada=new Partida();
-//        partidaEnviada.setNumCasillasAspa(20);
-//        c.enviar(partidaEnviada);
-       
->>>>>>> Stashed changes
+
+
+     
+////        Partida partidaEnviada=new Partida();
+////        partidaEnviada.setNumCasillasAspa(20);
+////        c.enviar(partidaEnviada);
     
     } 
 }
