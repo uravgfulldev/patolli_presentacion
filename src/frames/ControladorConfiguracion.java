@@ -4,10 +4,36 @@
  */
 package frames;
 
+import dominio.Partida;
+
 /**
  *
  * @author Hugo Rivera
  */
 public class ControladorConfiguracion {
+    
+    public int numCasillas;
+    public int numFichas;
+    public int fondoApuesta;
+    public int montoApuesta;
+    
+    FrmConfigurarPartida frame;
+
+    public ControladorConfiguracion() {
+        
+    }
+    
+    
+    public void obtenValores(){
+        
+    }
+    
+    public Partida configurarPartida(Partida partida){
+        partida.setNumCasillasAspa(numCasillas);
+        partida.setNumFichasJugador(numFichas);
+        partida.setFondoApuesta(fondoApuesta);
+        partida.setValorApuesta(montoApuesta);
+        return partida;
+    }
     
 }

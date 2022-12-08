@@ -27,7 +27,6 @@ public class FrmTablero extends FrmBase implements Observer {
         jugadorTab=jugador;
         initComponents();
         init();
-        init();
     }
 
     /**
@@ -324,7 +323,7 @@ public class FrmTablero extends FrmBase implements Observer {
         panelTituloLayout.setVerticalGroup(
             panelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTituloLayout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel10)
                 .addContainerGap())
         );
@@ -362,9 +361,13 @@ public class FrmTablero extends FrmBase implements Observer {
         int close=0;
       	int randomNumber=r.nextInt(numMovimientos.length);
       	txtDado.setText(numMovimientos[randomNumber]+"");
+        //-------------------Aparecer Ficha------------------------------------
+        jugadorTab.setMeterFicha(true);
+        partidaTab.setJugadorTurno(jugadorTab);
     }//GEN-LAST:event_btnEjercerTurnoActionPerformed
-   private void init(){
+    private void init(){
        inizializarValores();
+
        //Dibujando tablero
        Tablero tablero= partidaTab.getTablero();
        cnvTablero=new CnvTablero(tablero.getCasillas(),partidaTab.getNumCasillasAspa(),this.getSize().width);
@@ -372,7 +375,11 @@ public class FrmTablero extends FrmBase implements Observer {
        cnvTablero.setSize(this.getWidth(), partidaTab.getNumCasillasAspa() * 50 + (50 * 5));
        cnvTablero.setLocation(0,0);
        panelAreaTablero.add(cnvTablero);
-   }
+    }
+    
+    private void pintarFicha(){
+        
+    }
     /**
      * @param args the command line arguments
      */

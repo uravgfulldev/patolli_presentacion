@@ -30,6 +30,8 @@ abstract class GraficoCasilla extends ElementoGrafico {
     @Override
     public void dibujar(Graphics2D g2d) {
         g2d.setStroke(new BasicStroke(2));
-        
+        if (casilla.getFicha() != null) {
+            (new GraficoFicha(casilla.getCoordenadaX(), casilla.getCoordenadaY(), ANCHO, ALTO, casilla.getFicha().getJugador().getColor())).dibujar(g2d);
+        }
     }
 }

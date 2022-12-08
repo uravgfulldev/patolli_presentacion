@@ -10,6 +10,7 @@ import dominio.CasillaCentro;
 import dominio.CasillaPropia;
 import dominio.CasillaSemicirculo;
 import dominio.CasillaTriangulo;
+import dominio.ColorFicha;
 import dominio.LugarSemicirculo;
 import dominio.LugarTriangulo;
 import java.awt.Color;
@@ -72,10 +73,13 @@ public final class CnvTablero extends JPanel {
                 (new GCasillaTriangulo(casilla, numCasillasAspa)).dibujar(g2d);
             }else if(casilla instanceof CasillaPropia){
                 (new GCasillaPropia(casilla, numCasillasAspa)).dibujar(g2d);
+                new GraficoFicha(casilla.getCoordenadaX()+10, casilla.getCoordenadaY()+10, 30, 30, ColorFicha.AZUL).dibujar(g2d);
             }else{
                 (new GCasillaNormal(casilla, numCasillasAspa)).dibujar(g2d);
             }
         }
+        
+        
     }
     /**
      * Método para asignar la lista enlazada de casillas.
