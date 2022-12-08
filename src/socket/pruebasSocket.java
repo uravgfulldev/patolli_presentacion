@@ -21,6 +21,9 @@ public class pruebasSocket {
         // TODO code application logic here
         ClienteSocket c=new ClienteSocket();
         try {
+           Partida partidaEnviada=new Partida();
+           partidaEnviada.setNumCasillasAspa(20);
+           c.enviar(partidaEnviada);
            Partida partidaString=c.recibirMensaje();
             System.out.println("Numero de casillas por aspa: "+partidaString.getNumCasillasAspa());
             

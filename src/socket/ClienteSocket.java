@@ -7,6 +7,7 @@ package socket;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sun.corba.se.spi.activation.ServerManager;
 import dominio.IServidor;
 import dominio.Partida;
 import java.io.DataInputStream;
@@ -67,11 +68,11 @@ public class ClienteSocket implements Observable,IServidor{
 
     @Override
     public void enviar(Partida partida) {
-//        try {
-//           // this.outputStream.writeUTF(partida);
-//        } catch (IOException ex) {
-//            Logger.getLogger(ClienteSocket.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        try {
+            this.outputStream.writeUTF(ConvertirObjectoString(partida));
+        } catch (IOException ex) {
+            Logger.getLogger(ClienteSocket.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
      public Partida convertirPartida(String partida) {
@@ -81,5 +82,13 @@ public class ClienteSocket implements Observable,IServidor{
             ex.printStackTrace();
         }
         return null;
+    }
+     private String ConvertirObjectoString(Partida partida) {
+        try {
+            return objectMapper.writeValueAsString(partida);
+        } catch (JsonProcessingException ex) {
+            Logger.getLogger(ServerManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "";
     }
 }
