@@ -13,7 +13,7 @@ import dominio.Partida;
  *
  * @author Hiram García
  */
-public class FrmSeleccion extends FrmBase {
+public class FrmSeleccion extends FrmBase implements Observer{
 
     /**
      * Creates new form FrmSeleccion
@@ -247,4 +247,9 @@ public class FrmSeleccion extends FrmBase {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtJugador;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void update() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

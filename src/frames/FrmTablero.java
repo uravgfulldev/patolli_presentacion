@@ -14,7 +14,7 @@ import java.util.Random;
  *
  * @author Hugo Rivera
  */
-public class FrmTablero extends FrmBase {
+public class FrmTablero extends FrmBase implements Observer {
 
     /**
      * Creates new form FrmTablero
@@ -412,4 +412,9 @@ public class FrmTablero extends FrmBase {
     private javax.swing.JTextField txtJugadorTurno;
     private javax.swing.JTextField txtSemillas;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void update() {
+        
+    }
 }
