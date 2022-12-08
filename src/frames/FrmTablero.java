@@ -5,9 +5,15 @@
 package frames;
 
 import dibujosG.CnvTablero;
+import dominio.Casilla;
+import dominio.Ficha;
 import dominio.Jugador;
 import dominio.Partida;
 import dominio.Tablero;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -22,9 +28,13 @@ public class FrmTablero extends FrmBase implements Observer {
     private CnvTablero cnvTablero;
     private Partida partidaTab;
     private Jugador jugadorTab;
+    private List<Casilla> casillas;
+    private int casillaAnterior, casillaNueva;
+    Ficha ficha;
     public FrmTablero(Partida partida, Jugador jugador) {
         partidaTab=partida;
         jugadorTab=jugador;
+        casillas = partidaTab.getTablero().getCasillas();
         initComponents();
         init();
     }
@@ -60,6 +70,7 @@ public class FrmTablero extends FrmBase implements Observer {
         btnEjercerTurno = new javax.swing.JButton();
         btnApostar = new javax.swing.JButton();
         btnRetirarse = new javax.swing.JButton();
+        btnSacarFicha = new javax.swing.JButton();
         labelAcciones = new javax.swing.JLabel();
         panelTitulo = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
@@ -287,7 +298,7 @@ public class FrmTablero extends FrmBase implements Observer {
                 btnEjercerTurnoActionPerformed(evt);
             }
         });
-        panelControles.add(btnEjercerTurno, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 150, 30));
+        panelControles.add(btnEjercerTurno, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 150, 30));
 
         btnApostar.setText("Hacer Apuesta");
         panelControles.add(btnApostar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, 150, 30));
@@ -299,6 +310,14 @@ public class FrmTablero extends FrmBase implements Observer {
             }
         });
         panelControles.add(btnRetirarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 300, 150, 30));
+
+        btnSacarFicha.setText("Sacar Ficha");
+        btnSacarFicha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSacarFichaActionPerformed(evt);
+            }
+        });
+        panelControles.add(btnSacarFicha, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, 150, 30));
 
         labelAcciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dibujos/PanelAcciones.png"))); // NOI18N
         panelControles.add(labelAcciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, -1));
@@ -364,12 +383,47 @@ public class FrmTablero extends FrmBase implements Observer {
         //-------------------Aparecer Ficha------------------------------------
         jugadorTab.setMeterFicha(true);
         partidaTab.setJugadorTurno(jugadorTab);
+        
+        casillaAnterior = casillaNueva;
+        casillaNueva++;
+        
+        if(casillaNueva > casillas.size()-1){
+            casillaNueva = 0;
+            casillas.get(casillaAnterior).setFicha(null);
+            casillas.get(casillaNueva).setFicha(ficha);
+            
+            partidaTab.getTablero().setCasillas((LinkedList<Casilla>) casillas);
+        
+            pintarTablero();
+        } else{
+            
+            casillas.get(casillaAnterior).setFicha(null);
+            casillas.get(casillaNueva).setFicha(ficha);
+            
+            partidaTab.getTablero().setCasillas((LinkedList<Casilla>) casillas);
+        
+            pintarTablero();
+        }
     }//GEN-LAST:event_btnEjercerTurnoActionPerformed
+
+    private void btnSacarFichaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSacarFichaActionPerformed
+        
+        
+        ficha = new Ficha(1, jugadorTab, true);
+        
+        casillaNueva = 6;
+        
+        casillas.get(casillaNueva).setFicha(ficha);
+        
+        partidaTab.getTablero().setCasillas((LinkedList<Casilla>) casillas);
+        
+        pintarTablero();
+    }//GEN-LAST:event_btnSacarFichaActionPerformed
     private void init(){
        inizializarValores();
 
        //Dibujando tablero
-       Tablero tablero= partidaTab.getTablero();
+       Tablero tablero= partidaTab.getTablero(); 
        cnvTablero=new CnvTablero(tablero.getCasillas(),partidaTab.getNumCasillasAspa(),this.getSize().width);
        tablero.setCasillas(cnvTablero.generarCasillas());
        cnvTablero.setSize(this.getWidth(), partidaTab.getNumCasillasAspa() * 50 + (50 * 5));
@@ -377,8 +431,11 @@ public class FrmTablero extends FrmBase implements Observer {
        panelAreaTablero.add(cnvTablero);
     }
     
-    private void pintarFicha(){
-        
+    private void pintarTablero() {
+        cnvTablero.setCasillas(partidaTab.getTablero().getCasillas());
+        this.repaint();
+        //cnvTablero.repaint();
+        //  this.paintComponents(this.getGraphics());
     }
     /**
      * @param args the command line arguments
@@ -396,6 +453,7 @@ public class FrmTablero extends FrmBase implements Observer {
     private javax.swing.JButton btnApostar;
     private javax.swing.JButton btnEjercerTurno;
     private javax.swing.JButton btnRetirarse;
+    private javax.swing.JButton btnSacarFicha;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JPanel jPanel1;
