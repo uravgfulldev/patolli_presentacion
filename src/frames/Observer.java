@@ -4,10 +4,12 @@
  */
 package frames;
 
+import dominio.Partida;
+
 /**
  *
  * @author Hugo Rivera
  */
 public interface Observer {
-    public void update();
+    public void update(Partida partida);
 }

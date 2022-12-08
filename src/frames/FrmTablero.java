@@ -15,6 +15,7 @@ import java.awt.Graphics;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
+import socket.ClienteSocket;
 
 /**
  *
@@ -28,6 +29,7 @@ public class FrmTablero extends FrmBase implements Observer {
     private CnvTablero cnvTablero;
     private Partida partidaTab;
     private Jugador jugadorTab;
+<<<<<<< Updated upstream
     private List<Casilla> casillas;
     private int casillaAnterior, casillaNueva;
     Ficha ficha;
@@ -35,6 +37,14 @@ public class FrmTablero extends FrmBase implements Observer {
         partidaTab=partida;
         jugadorTab=jugador;
         casillas = partidaTab.getTablero().getCasillas();
+=======
+    private ClienteSocket c ;
+    public FrmTablero(Partida partida, Jugador jugador) {
+        partidaTab=partida;
+        jugadorTab=jugador;
+        c=new ClienteSocket();
+        c.agregarObserver(this);
+>>>>>>> Stashed changes
         initComponents();
         init();
     }
@@ -478,8 +488,10 @@ public class FrmTablero extends FrmBase implements Observer {
     private javax.swing.JTextField txtSemillas;
     // End of variables declaration//GEN-END:variables
 
+    
+
     @Override
-    public void update() {
-        
+    public void update(Partida partida) {
+        partidaTab=partida;
     }
 }

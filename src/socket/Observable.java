@@ -4,6 +4,7 @@
  */
 package socket;
 
+import dominio.Partida;
 import frames.Observer;
 
 
@@ -13,6 +14,6 @@ import frames.Observer;
  * @author Hugo Rivera
  */
 public interface Observable {
-    public void notificar();
+    public void notificar(Partida partida);
     public void agregarObserver(Observer observer);
 }

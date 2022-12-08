@@ -19,6 +19,7 @@ public class pruebasSocket {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+<<<<<<< Updated upstream
         ClienteSocket c=new ClienteSocket();
         try {
            Partida partidaString=c.recibirMensaje();
@@ -27,6 +28,13 @@ public class pruebasSocket {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(pruebasSocket.class.getName()).log(Level.SEVERE, null, ex);
         }
+=======
+        
+//        Partida partidaEnviada=new Partida();
+//        partidaEnviada.setNumCasillasAspa(20);
+//        c.enviar(partidaEnviada);
+       
+>>>>>>> Stashed changes
     
     } 
 }
