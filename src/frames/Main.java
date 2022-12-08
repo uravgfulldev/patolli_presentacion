@@ -15,21 +15,8 @@ public class Main {
      */
     public static void main(String[] args) {
         
-        System.out.println("Hola");
-        System.out.println("Hola2.0 JDK17");
-        
         FrmInicio frmInicio=new FrmInicio();
         frmInicio.setVisible(true);
-        System.out.println("asdasd");
-        System.out.println("asdasd");System.out.println("asdasd");
-        System.out.println("asdasd");
-        System.out.println("asdasd");
-        System.out.println("asdasd");System.out.println("asdasd");System.out.println("asdasd");
-        System.out.println("asdasd");System.out.println("asdasd");System.out.println("asdasd");
-        
-        
-        
-        
     }
     
 }

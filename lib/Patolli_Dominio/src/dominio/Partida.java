@@ -12,8 +12,8 @@ import java.util.Queue;
  *
  * @author Hugo Rivera
  */
-public class Partida {
-
+public class Partida implements Serializable{
+    
     private Tablero tablero;
     private ArrayList<Jugador> jugadores;
     private Queue<Jugador> turnos;
