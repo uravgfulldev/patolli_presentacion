@@ -392,17 +392,10 @@ public class FrmTablero extends FrmBase implements Observer {
             partidaTab.setJugadorTurno(jugadorTab);
             partidaTab.setFichaMovimiento(ficha);
             c.enviar(partidaTab);
-            
-            casillas=partidaTab.getTablero().getCasillas();
-            
-            System.out.println(partidaTab);
+ 
+            System.out.println(casillas);
             //casillas.set(casillas.indexOf(partidaTab.getJugadorTurno().getCasillaPropia()),partidaTab.getJugadorTurno().getCasillaPropia());
             //partidaTab.getTablero().setCasillas((LinkedList<Casilla>) casillas);
-        
-            pintarTablero();
-        
-
-        
 
        // randomNumber--;
         //}
@@ -492,6 +485,7 @@ public class FrmTablero extends FrmBase implements Observer {
         if(partida!=null){
             partidaTab=partida;
             casillas=partidaTab.getTablero().getCasillas();
+            pintarTablero();
         }
         
     }

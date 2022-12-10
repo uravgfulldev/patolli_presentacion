@@ -64,6 +64,8 @@ public class Casilla{
 
     @Override
     public String toString() {
-        return "Casilla{" + "numero=" + numero ;
+        return "Casilla{" + "coordenadaX=" + coordenadaX + ", coordenadaY=" + coordenadaY + ", numero=" + numero + ", ficha=" + ficha + '}';
     }
+
+    
 }

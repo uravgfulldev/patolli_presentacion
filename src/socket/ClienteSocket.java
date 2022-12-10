@@ -28,8 +28,8 @@ import java.util.logging.Logger;
  */
 public class ClienteSocket extends Thread implements Observable,IServidor{
     private Socket clienteSocket=null;
-    private DataInputStream inputStream;
-    private DataOutputStream outputStream;
+    private DataInputStream in;
+    private DataOutputStream out;
     private ObjectMapper objectMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     private Partida partida;
     private Observer observer;
@@ -39,20 +39,22 @@ public class ClienteSocket extends Thread implements Observable,IServidor{
        
         
     }
-    public Partida recibirMensaje() throws ClassNotFoundException{
+    public Partida recibirMensaje() throws ClassNotFoundException, IOException{
         Partida partida= null;
-        String partidaString="";
+        //String partidaString="";
         try {      
-            partidaString = inputStream.readUTF();
+            
             
             //System.out.println(partidaString);
-            if(partidaString!=null){
-                return partida=convertirPartida(partidaString);
+            if((partida = convertirPartida(in.readUTF())) != null){
+                return partida;
             }
 
            
-        } catch (IOException ex) {
-            Logger.getLogger(ClienteSocket.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            out.close();
+            in.close();
+            clienteSocket.close();
         }
             
        
@@ -74,7 +76,7 @@ public class ClienteSocket extends Thread implements Observable,IServidor{
     public void enviar(Partida partida) {
         try {
             String n=ConvertirObjectoString(partida);
-            this.outputStream.writeUTF(n);
+            this.out.writeUTF(n);
         } catch (IOException ex) {
             Logger.getLogger(ClienteSocket.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -102,8 +104,8 @@ public class ClienteSocket extends Thread implements Observable,IServidor{
         if (clienteSocket == null) {
             clienteSocket = new Socket("localhost", 4444);
             //  out = new PrintWriter(cliente.getOutputStream(), true);
-            inputStream = new DataInputStream(clienteSocket.getInputStream());
-            outputStream = new DataOutputStream(clienteSocket.getOutputStream());
+            in = new DataInputStream(clienteSocket.getInputStream());
+            out = new DataOutputStream(clienteSocket.getOutputStream());
             Partida partida = null;
             try {
                 partida = recibirMensaje();
