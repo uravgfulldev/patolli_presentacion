@@ -25,6 +25,9 @@ public class Ficha {
         this.enJuego = enJuego;
     }
 
+    public Ficha() {
+    }
+
     public Jugador getJugador() {
         return jugador;
     }

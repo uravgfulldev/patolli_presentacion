@@ -26,8 +26,8 @@ import java.util.logging.Logger;
  *
  * @author Hugo Rivera
  */
-public class ClienteSocket implements Runnable,Observable,IServidor{
-    private Socket clienteSocket;
+public class ClienteSocket extends Thread implements Observable,IServidor{
+    private Socket clienteSocket=null;
     private DataInputStream inputStream;
     private DataOutputStream outputStream;
     private ObjectMapper objectMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
@@ -41,14 +41,21 @@ public class ClienteSocket implements Runnable,Observable,IServidor{
     }
     public Partida recibirMensaje() throws ClassNotFoundException{
         Partida partida= null;
-        try {
+        String partidaString="";
+        try {      
+            partidaString = inputStream.readUTF();
             
-            //this.outputStream.writeUTF();
-            partida=convertirPartida(this.inputStream.readUTF());
-            
+            //System.out.println(partidaString);
+            if(partidaString!=null){
+                return partida=convertirPartida(partidaString);
+            }
+
+           
         } catch (IOException ex) {
             Logger.getLogger(ClienteSocket.class.getName()).log(Level.SEVERE, null, ex);
         }
+            
+       
         return partida;
     }
     @Override
@@ -65,16 +72,18 @@ public class ClienteSocket implements Runnable,Observable,IServidor{
 
     @Override
     public void enviar(Partida partida) {
-//        try {
-//           // this.outputStream.writeUTF(partida);
-//        } catch (IOException ex) {
-//            Logger.getLogger(ClienteSocket.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        try {
+            String n=ConvertirObjectoString(partida);
+            this.outputStream.writeUTF(n);
+        } catch (IOException ex) {
+            Logger.getLogger(ClienteSocket.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
-     public Partida convertirPartida(String partida) {
+     private Partida convertirPartida(String partida) {
         try {
-            return objectMapper.readValue(partida, Partida.class);
+            if(partida!=null) return objectMapper.readValue(partida, Partida.class);
+           
         } catch (JsonProcessingException ex) {
             ex.printStackTrace();
         }
