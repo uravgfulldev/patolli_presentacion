@@ -7,6 +7,7 @@ package frames;
 import dominio.ColorFicha;
 import dominio.Jugador;
 import dominio.Partida;
+import javax.swing.JFrame;
 import socket.ClienteSocket;
 
 
@@ -14,7 +15,7 @@ import socket.ClienteSocket;
  *
  * @author Hiram García
  */
-public class FrmSeleccion extends FrmBase implements Observer{
+public class FrmSeleccion extends JFrame implements Observer{
 
     /**
      * Creates new form FrmSeleccion
@@ -158,7 +159,8 @@ public class FrmSeleccion extends FrmBase implements Observer{
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
-        getFrmInicio().setVisible(true);
+        FrmInicio frmInicio=new FrmInicio();
+        frmInicio.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 

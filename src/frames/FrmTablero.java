@@ -16,13 +16,14 @@ import java.awt.Graphics;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
+import javax.swing.JFrame;
 import socket.ClienteSocket;
 
 /**
  *
  * @author Hugo Rivera
  */
-public class FrmTablero extends FrmBase implements Observer {
+public class FrmTablero extends JFrame implements Observer {
 
     /**
      * Creates new form FrmTablero

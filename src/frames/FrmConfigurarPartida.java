@@ -7,12 +7,13 @@ package frames;
 import dominio.Jugador;
 import dominio.Partida;
 import java.util.ArrayList;
+import javax.swing.JFrame;
 
 /**
  *
  * @author Daniel Salas
  */
-public class FrmConfigurarPartida extends FrmBase implements Observer{
+public class FrmConfigurarPartida extends JFrame implements Observer{
 
     /**
      * 
@@ -240,7 +241,8 @@ public class FrmConfigurarPartida extends FrmBase implements Observer{
      */
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
-        getFrmInicio().setVisible(true);
+        FrmInicio frmInicio=new FrmInicio();
+        frmInicio.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
     /**

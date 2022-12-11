@@ -12,8 +12,8 @@ import dominio.Partida;
  * @author Hugo Rivera
  */
 public class FrmInicio extends javax.swing.JFrame {
-     private static FrmConfigurarPartida frmConfigurar;
-     private static FrmSeleccion frmSeleccion;
+     private FrmConfigurarPartida frmConfigurar;
+     private FrmSeleccion frmSeleccion;
      private Partida partidaInicio;
     private Jugador jugadorInicio;
     /**
