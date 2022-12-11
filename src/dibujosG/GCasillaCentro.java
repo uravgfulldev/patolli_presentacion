@@ -28,14 +28,13 @@ public class GCasillaCentro extends GCasillaNormal{
      */
     @Override
     public void dibujar(Graphics2D g2d) {
-        super.dibujar(g2d);
+        //Graphics g;
         Rectangle rect = new Rectangle();
         g2d.setColor(Color.LIGHT_GRAY);
         rect.setBounds(casilla.getCoordenadaX(), casilla.getCoordenadaY(), ANCHO, ALTO);
         g2d.fill(rect);
-        g2d.setColor(Color.BLACK);
         g2d.draw(rect);
-        
+        super.dibujar(g2d);
     }
 
     

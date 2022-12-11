@@ -30,18 +30,20 @@ public class FrmTablero extends FrmBase implements Observer {
     private CnvTablero cnvTablero;
     private Partida partidaTab;
     private Jugador jugadorTab;
-    private ClienteSocket c ;
-    private List<Casilla> casillas;
+    //private ClienteSocket c ;
+    private ControladorTablero controlador;
+    private LinkedList<Casilla> casillas;
     private int casillaAnterior, casillaNueva;
     Ficha ficha;
-    public FrmTablero(Partida partida, Jugador jugador) {
+    public FrmTablero(Partida partida, Jugador jugador,ClienteSocket cliente) {
         partidaTab=partida;
         jugadorTab=jugador;
         
-        c=new ClienteSocket();
-        c.agregarObserver(this);
+        //c=new ClienteSocket();
+        //c.agregarObserver(this);
         initComponents();
         init();
+        controlador=new ControladorTablero(this,cliente);
     }
 
     /**
@@ -387,12 +389,13 @@ public class FrmTablero extends FrmBase implements Observer {
       	txtDado.setText(numMovimientos[randomNumber]+"");
         //-------------------Aparecer Ficha------------------------------------
        // while (randomNumber+1 > 0){
-            partidaTab.setCuantasMueve(randomNumber);
+            partidaTab.setCuantasMueve(Integer.parseInt(txtDado.getText()));
             jugadorTab.setMeterFicha(true);
             partidaTab.setJugadorTurno(jugadorTab);
             partidaTab.setFichaMovimiento(ficha);
-            c.enviar(partidaTab);
- 
+            //System.out.println(casillas);
+            //c.enviar(partidaTab);
+            controlador.enviarPartida(partidaTab);
             System.out.println(casillas);
             //casillas.set(casillas.indexOf(partidaTab.getJugadorTurno().getCasillaPropia()),partidaTab.getJugadorTurno().getCasillaPropia());
             //partidaTab.getTablero().setCasillas((LinkedList<Casilla>) casillas);
@@ -411,7 +414,7 @@ public class FrmTablero extends FrmBase implements Observer {
         casillas.get(casillaNueva).setFicha(ficha);
         
         partidaTab.getTablero().setCasillas((LinkedList<Casilla>) casillas);
-        
+        System.out.println(casillas);
         pintarTablero();
     }//GEN-LAST:event_btnSacarFichaActionPerformed
     private void init(){
@@ -427,15 +430,15 @@ public class FrmTablero extends FrmBase implements Observer {
        cnvTablero.setSize(this.getWidth(), partidaTab.getNumCasillasAspa() * 50 + (50 * 5));
        cnvTablero.setLocation(0,0);
        panelAreaTablero.add(cnvTablero);
-       new Thread(c).start();
+       
       
     }
     
     private void pintarTablero() {
-        cnvTablero.setCasillas(partidaTab.getTablero().getCasillas());
+        cnvTablero.setCasillas(casillas);
+        //cnvTablero.paintComponent(this.getGraphics());
         this.repaint();
-        //cnvTablero.repaint();
-        //  this.paintComponents(this.getGraphics());
+        
     }
     /**
      * @param args the command line arguments

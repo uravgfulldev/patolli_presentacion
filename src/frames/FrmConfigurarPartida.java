@@ -32,6 +32,7 @@ public class FrmConfigurarPartida extends FrmBase implements Observer{
     private int MAX_MONTO = 10;
     private Partida partidaConf;
     private Jugador jugadorConf;
+    private ControladorConfiguracion controlador;
     public FrmConfigurarPartida(Partida partida,Jugador jugador) {
         partidaConf=partida;
         jugadorConf=jugador;
@@ -47,6 +48,7 @@ public class FrmConfigurarPartida extends FrmBase implements Observer{
     
     public void init(){
         inicializarValores();
+        controlador=new ControladorConfiguracion(this);
         
     }
     @SuppressWarnings("unchecked")
@@ -355,7 +357,7 @@ public class FrmConfigurarPartida extends FrmBase implements Observer{
      */
     public FrmSeleccion getFrmSeleccion() {
         if(frmSeleccion==null){
-            frmSeleccion=new FrmSeleccion(partidaConf,jugadorConf);
+            frmSeleccion=new FrmSeleccion(partidaConf,jugadorConf,controlador.getC());
         }
         return frmSeleccion;
     }

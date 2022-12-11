@@ -7,6 +7,7 @@ package frames;
 import dominio.ColorFicha;
 import dominio.Jugador;
 import dominio.Partida;
+import socket.ClienteSocket;
 
 
 /**
@@ -20,10 +21,15 @@ public class FrmSeleccion extends FrmBase implements Observer{
      */
      private Partida partidaSelec;
     private Jugador jugadorSelec;
-    public FrmSeleccion(Partida partida, Jugador jugador) {
+    private ControladorSeleccion controlador;
+    public FrmSeleccion(Partida partida, Jugador jugador,ClienteSocket cliente) {
         partidaSelec=partida;
         jugadorSelec=jugador;
         initComponents();
+        if(cliente!=null){
+            controlador=new ControladorSeleccion(this,cliente);
+        }
+        
     }
 
     /**
@@ -144,7 +150,7 @@ public class FrmSeleccion extends FrmBase implements Observer{
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
        if (jugadorSelec.getColor() != null && !txtJugador.getText().isEmpty()) {
-        FrmTablero frmTablero=new FrmTablero(partidaSelec,jugadorSelec);
+        FrmTablero frmTablero=new FrmTablero(partidaSelec,jugadorSelec,controlador.getC());
         frmTablero.setVisible(true);
         dispose();
        }

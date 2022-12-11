@@ -127,7 +127,7 @@ public class FrmInicio extends javax.swing.JFrame {
      */
     public FrmSeleccion getFrmSeleccion() {
         if(frmSeleccion==null){
-            frmSeleccion=new FrmSeleccion(partidaInicio,jugadorInicio);
+            frmSeleccion=new FrmSeleccion(partidaInicio,jugadorInicio,null);
         }
         return frmSeleccion;
     }

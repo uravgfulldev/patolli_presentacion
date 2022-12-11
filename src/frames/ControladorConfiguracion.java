@@ -5,6 +5,7 @@
 package frames;
 
 import dominio.Partida;
+import socket.ClienteSocket;
 
 /**
  *
@@ -12,28 +13,25 @@ import dominio.Partida;
  */
 public class ControladorConfiguracion {
     
-    public int numCasillas;
-    public int numFichas;
-    public int fondoApuesta;
-    public int montoApuesta;
-    
+    private ClienteSocket c;
     FrmConfigurarPartida frame;
 
-    public ControladorConfiguracion() {
-        
+    public ControladorConfiguracion(Observer observer) {
+        c=new ClienteSocket();
+        new Thread(c).start();
+        c.agregarObserver(observer);
     }
     
-    
-    public void obtenValores(){
-        
+    public ClienteSocket getC() {
+        return c;
     }
-    
-    public Partida configurarPartida(Partida partida){
-        partida.setNumCasillasAspa(numCasillas);
-        partida.setNumFichasJugador(numFichas);
-        partida.setFondoApuesta(fondoApuesta);
-        partida.setValorApuesta(montoApuesta);
-        return partida;
+
+    public void setC(ClienteSocket c) {
+        this.c = c;
     }
+
     
+    public void enviarPartida(Partida partida){
+        c.enviar(partida);
+    }
 }
