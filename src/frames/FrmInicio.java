@@ -23,6 +23,7 @@ public class FrmInicio extends javax.swing.JFrame {
         partidaInicio=new Partida();
         jugadorInicio=new Jugador();
         initComponents();
+        btnUnirse.setEnabled(false);
     }
 
     /**

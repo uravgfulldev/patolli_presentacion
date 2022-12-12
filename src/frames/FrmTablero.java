@@ -406,8 +406,6 @@ public class FrmTablero extends JFrame implements Observer {
     }//GEN-LAST:event_btnEjercerTurnoActionPerformed
 
     private void btnSacarFichaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSacarFichaActionPerformed
-        
-        
         ficha = new Ficha(1, jugadorTab, true);
         
         casillaNueva = 6;
